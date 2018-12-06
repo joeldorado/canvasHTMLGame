@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<title>Game</title>
+	<style type="text/css">
+	canvas{
+		border: solid;
+	}
+	</style>
+</head>
+<body>
+	<canvas id="canvas1">
+		tu navegador no soporta canvas.
+	</canvas>
+	<img src="pdfGenerator.png" id="img"  style="display:none;"/>
+	<script>
+		window.addEventListener('load',init);
+		function init(){
+		var canvas = document.getElementById("canvas1");
+		var ctx = canvas.getContext('2d');
+		var img = document.getElementById("img");
+		ctx.drawImage(img,10,90); 
+			ctx.strokeStyle ='black';
+			face(ctx,'blue');
+			ctx.strokeRect(0,0,20,30);
+		}
+		function face(ctx,color){
+		
+			ctx.save();
+			ctx.strokeStyle = color;		
+			ctx.beginPath();
+			ctx.arc(50,50,10,aRadianes(0),aRadianes(360),true);
+			ctx.moveTo(50,80);
+			ctx.arc(50,50,30,aRadianes(90),aRadianes(180),true);
+			ctx.moveTo(160,50);
+			ctx.arc(150,50,10,aRadianes(0),aRadianes(360),true);
+			ctx.moveTo(150,80);
+			ctx.arc(150,50,30,aRadianes(90),aRadianes(360),false);
+			ctx.stroke();
+			ctx.beginPath();
+			ctx.arc(90,110,30,aRadianes(0),aRadianes(180));     
+			ctx.stroke();  
+			ctx.restore();
+			console.log(ctx);
+	
+			}
+		function aRadianes(grados){
+			return (grados * Math.PI)/180;
+		}
+		
+	</script>   
+
+	</body>
+<html>  
